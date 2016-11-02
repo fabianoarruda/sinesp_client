@@ -1,6 +1,7 @@
 require "sinesp_client/version"
 require 'openssl'
 require 'httparty'
+require 'securerandom'
 
 module SinespClient
 
