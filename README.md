@@ -1,6 +1,8 @@
 # Ruby Sinesp Client
 
-This gem provides a client for searching vehicle data based on the license plate from Sinesp database. This data is publicly available at https://www.sinesp.gov.br/sinesp-cidadao. The gem just makes it easier to fetch results, through the same endpoint used by the mobile app.
+This gem provides a client for searching vehicle data based on the license plate from Sinesp database. This data is publicly available at https://www.sinesp.gov.br/sinesp-cidadao. The gem just makes it easier to fetch results, through the same endpoint used by the mobile app. 
+
+For a python version, please check this: https://github.com/victor-torres/sinesp-client
 
 ## Installation
 
@@ -27,11 +29,15 @@ SinespClient.search 'ABC1234'
 
 Returns a hash with basic vehicle data.
 
+## Limitations
+
+Sinesp seems to block connections originated from outside of Brazil. TODO: make the gem work with proxy.
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+To install this gem onto your local machine, run `bundle exec rake install`. 
 
 ## Contributing
 
