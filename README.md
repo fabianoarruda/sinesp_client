@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/fabianoarruda/sinesp_client.svg?branch=master)](https://travis-ci.org/fabianoarruda/sinesp_client)
+
 # Ruby Sinesp Client
 
 This gem provides a client for searching vehicle data based on the license plate from Sinesp database. This data is publicly available at https://www.sinesp.gov.br/sinesp-cidadao. The gem just makes it easier to fetch results, through the same endpoint used by the mobile app. 
