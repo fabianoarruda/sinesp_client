@@ -1,4 +1,3 @@
-[![Build Status](https://travis-ci.org/fabianoarruda/sinesp_client.svg?branch=master)](https://travis-ci.org/fabianoarruda/sinesp_client)
 
 # Ruby Sinesp Client
 

@@ -6,7 +6,9 @@ describe SinespClient do
   end
 
   it "gets a valid plate" do
-    expect(SinespClient.search('ABC1234')).to be_a_kind_of Hash
+    result = SinespClient.search('ABC1234')
+    expect(result).to be_a_kind_of Hash
+    expect(result["codigoRetorno"]).to eq "0"
   end
 
   it "gets a invalid plate" do

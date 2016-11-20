@@ -17,24 +17,23 @@ module SinespClient
 
   def self.search(plate)
 
-    key = "3ktTqS63LBPlOT3WgFlk"
+    key = "TRwf1iBwvCoSboSscGne"
     digest = OpenSSL::Digest.new('sha1')
     hash = OpenSSL::HMAC.hexdigest(digest, plate + key, plate)
 
     body = "<?xml version='1.0' encoding='utf-8'?>
                 <soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">
                   <soap:Header>
-                  <b>iPhone</b>
-                  <c>iPhone OS</c>
-                  <j></j>
+                  <b>motorola XT1078</b>
+                  <c>ANDROID</c>
                   <i>#{lat}</i>
-                  <m>1204fdd387279490261aaf95a6567f64</m>
-                  <e>SinespCidadao</e>
+                  <m>8797e74f0d6eb7b1ff3dc114d4aa12d3</m>
+                  <e>4.1.1</e>
                   <f>10.0.0.1</f>
                   <g>#{hash}</g>
-                  <d>9.1</d>
+                  <d>6.0</d>
                   <h>#{long}</h>
-                  <k>#{SecureRandom.uuid}</k>
+                  <k />
                   <l>#{Time.now}</l>
                   </soap:Header>
                   <soap:Body>
