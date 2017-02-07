@@ -15,7 +15,7 @@ module SinespClient
     rand(-180.000000000...180.000000000)
   end
 
-  def self.search(plate)
+  def self.search(plate, opts={})
 
     key = "TRwf1iBwvCoSboSscGne"
     digest = OpenSSL::Digest.new('sha1')
@@ -51,9 +51,13 @@ module SinespClient
 
 
     #begin
-
+    if opts[:proxy_addr].present? && opts[:proxy_port].present?
+      response = post("http://sinespcidadao.sinesp.gov.br/sinesp-cidadao/mobile/consultar-placa", body: body, headers: headers, timeout: 10, http_proxyaddr: opts[:proxy_addr], http_proxyport: opts[:proxy_port])
+    elsif opts[:proxy_addr].present? && opts[:proxy_port].present? && opts[:proxy_user].present? && opts[:proxy_pass].present?
+      response = post("http://sinespcidadao.sinesp.gov.br/sinesp-cidadao/mobile/consultar-placa", body: body, headers: headers, timeout: 10, http_proxyaddr: opts[:proxy_addr], http_proxyport: opts[:proxy_port], http_proxyuser: opts[:proxy_user], http_proxypass: opts[:proxy_pass])
+    else
       response = post("http://sinespcidadao.sinesp.gov.br/sinesp-cidadao/mobile/consultar-placa", body: body, headers: headers, timeout: 10)
-
+    end
     #rescue
     #  return nil
     #end
