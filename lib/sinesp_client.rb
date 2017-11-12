@@ -4,13 +4,15 @@ require 'httparty'
 require 'securerandom'
 
 module SinespClient
+  include HTTParty
+  
   BASE_URL = 'sinespcidadao.sinesp.gov.br'.freeze
   SECRET_KEY = 'XvAmRTGhQchFwzwduKYK'.freeze
   
   def self.search(plate)
     @plate = plate.gsub(/\W+/, '')
     
-    response = HTTParty.post(
+    response = post(
       "https://sinespcidadao.sinesp.gov.br/sinesp-cidadao/mobile/consultar-placa/v2",
       body: body,
       headers: header,
@@ -25,7 +27,7 @@ module SinespClient
   private
   
   def self.captcha_cookie
-    response = HTTParty.get('https://sinespcidadao.sinesp.gov.br/sinesp-cidadao/captchaMobile.png', verify: false)
+    response = get('https://sinespcidadao.sinesp.gov.br/sinesp-cidadao/captchaMobile.png', verify: false)
     cookies = response.headers['set-cookie']
     {
       JSESSIONID: parse_cookie_to_jsessionid(cookies)
