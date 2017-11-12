@@ -21,7 +21,7 @@ module SinespClient
       verify: false
     )
     
-    response["Envelope"]["Body"]["getStatusResponse"]["return"]
+    response["Envelope"]["Body"]["getStatusResponse"]["return"].to_h
   end
   
   private
