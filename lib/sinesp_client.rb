@@ -5,54 +5,54 @@ require 'securerandom'
 
 module SinespClient
   include HTTParty
-  
+
   BASE_URL = 'sinespcidadao.sinesp.gov.br'.freeze
   SECRET_KEY = 'XvAmRTGhQchFwzwduKYK'.freeze
-  
+
   def self.search(plate)
     @plate = plate.gsub(/\W+/, '')
-    
+
     response = post(
-      "https://sinespcidadao.sinesp.gov.br/sinesp-cidadao/mobile/consultar-placa/v2",
+      "https://#{BASE_URL}/sinesp-cidadao/mobile/consultar-placa/v2",
       body: body,
       headers: header,
       timeout: 10,
       cookies: captcha_cookie,
       verify: false
     )
-    
+
     response["Envelope"]["Body"]["getStatusResponse"]["return"].to_h
   end
-  
+
   private
-  
+
   def self.captcha_cookie
-    response = get('https://sinespcidadao.sinesp.gov.br/sinesp-cidadao/captchaMobile.png', verify: false)
+    response = get("https://#{BASE_URL}/sinesp-cidadao/captchaMobile.png", verify: false)
     cookies = response.headers['set-cookie']
     {
       JSESSIONID: parse_cookie_to_jsessionid(cookies)
     }
   end
-  
+
   def self.parse_cookie_to_jsessionid(cookie)
     cookie.split(';').map{
       |value| value if value.include?('JSESSION')
     }.compact.first
   end
-  
+
   def self.lat
     rand(-90.000000000...90.000000000)
   end
-  
+
   def self.long
     rand(-180.000000000...180.000000000)
   end
-  
+
   def self.generate_token
     digest = OpenSSL::Digest.new('sha1')
     OpenSSL::HMAC.hexdigest(digest, @plate + SECRET_KEY, @plate)
   end
-  
+
   def self.header
     {
       "Timeout" => "30000",
@@ -62,11 +62,11 @@ module SinespClient
       "Cache-Control" =>  "no-cache",
       "Content-Length" =>  "661",
       "Content-Type" =>  "application/x-www-form-urlencoded; charset=UTF-8",
-      "Host" =>  "sinespcidadao.sinesp.gov.br",
+      "Host" =>  "#{BASE_URL}",
       "Connection" => "close"
     }
   end
-  
+
   def self.body
     "<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
       <v:Envelope xmlns:v='http://schemas.xmlsoap.org/soap/envelope/'>
