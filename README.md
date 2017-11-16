@@ -5,12 +5,13 @@ This gem provides a client for searching vehicle data based on the license plate
 
 For a python version, please check this: https://github.com/victor-torres/sinesp-client
 
+Inspirated by [Original gem](https://github.com/fabianoarruda/sinesp_client)
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'sinesp_client'
+gem 'sinesp-client'
 ```
 
 And then execute:
@@ -24,7 +25,7 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
-require "sinesp_client"
+require "sinesp-client"
 SinespClient.search 'ABC1234'
 ```
 
@@ -42,7 +43,7 @@ To install this gem onto your local machine, run `bundle exec rake install`.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/fabianoarruda/sinesp_client.
+Bug reports and pull requests are welcome on GitHub at https://github.com/aschiavon91/sinesp_client.
 
 
 ## License
