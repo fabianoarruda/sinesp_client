@@ -20,7 +20,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install sinesp_client
+    $ gem install sinesp-client
 
 ## Usage
 

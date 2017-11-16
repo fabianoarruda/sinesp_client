@@ -1,4 +1,4 @@
-require "sinesp_client/version"
+require "sinesp-client/version"
 require 'openssl'
 require 'httparty'
 require 'securerandom'

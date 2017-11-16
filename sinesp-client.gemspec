@@ -2,7 +2,7 @@
 
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'sinesp_client/version'
+require 'sinesp-client/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "sinesp-client"
@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "Another version of sinesp client gem"
   # spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "https://github.com/aschiavon91/sinesp_client"
+  spec.homepage      = "https://github.com/aschiavon91/sinesp-client"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
