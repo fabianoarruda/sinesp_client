@@ -1,4 +1,7 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in sinesp_client.gemspec
+# Specify your gem's dependencies in sinesp-client.gemspec
+
+gem 'httparty'
+
 gemspec
