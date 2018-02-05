@@ -1,11 +1,14 @@
 require "sinesp_client/version"
-require 'net/http'
-require 'uri'
 require 'openssl'
+require 'httparty'
 require 'securerandom'
-require 'nokogiri'
+
 
 module SinespClient
+
+  include HTTParty
+
+  default_options.update(verify: false)
 
   def self.lat
     rand(-90.000000000...90.000000000)
@@ -53,31 +56,15 @@ module SinespClient
 
     #begin
 
-    uri = URI.parse("https://189.9.194.154/sinesp-cidadao/mobile/consultar-placa/v3")
-    http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-    request = Net::HTTP::Post.new(uri.request_uri, headers)
-    request.body = body
-
-    response = http.request(request).body
+    response = post("https://189.9.194.154/sinesp-cidadao/mobile/consultar-placa/v3", body: body, headers: headers, timeout: 20)
 
     #rescue
     #  return nil
     #end
 
-    dom = Nokogiri::XML(response)
-
-    node = dom.at_xpath('//return')
-
-    parsed_response = node.element_children.each_with_object(Hash.new) do |e, h|
-      h[e.name.to_sym] = e.content
-    end
-
     #If the query is valid, "codigoRetorno" will be 0. Otherwise something went wrong. Just return nil.
     # if parsed_response[:codigoRetorno] == "0"
-    #   parsed_response
+    response["Envelope"]["Body"]["getStatusResponse"]["return"]
     # else
     #   nil
     # end
