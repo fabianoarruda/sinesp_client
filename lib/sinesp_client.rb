@@ -20,7 +20,7 @@ module SinespClient
 
   def self.search(plate)
 
-    key = "#8.1.0#Mw6HqdLgQsX41xAGZgsF"
+    key = "#8.1.0#g8LzUadkEHs7mbRqbX5l"
     digest = OpenSSL::Digest.new('sha1')
     hash = OpenSSL::HMAC.hexdigest(digest, plate + key, plate)
 
@@ -56,7 +56,7 @@ module SinespClient
 
     #begin
 
-    response = post("https://189.9.194.154/sinesp-cidadao/mobile/consultar-placa/v3", body: body, headers: headers, timeout: 20)
+    response = post("https://189.9.194.154/sinesp-cidadao/mobile/consultar-placa/v4", body: body, headers: headers, timeout: 20)
 
     #rescue
     #  return nil
